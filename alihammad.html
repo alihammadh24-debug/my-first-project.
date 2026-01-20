@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Colorlib | Free Bootstrap Website Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f0e8;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #2c3e50;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .template-name {
+            color: #999;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .template-name::before {
+            content: '+';
+            color: #999;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #7f8c8d;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .icon-btn.cart {
+            background-color: #8bc34a;
+            color: white;
+        }
+
+        .icon-btn.close {
+            color: #95a5a6;
+        }
+
+        .icon-btn.active {
+            background-color: #34495e;
+            color: #3498db;
+        }
+
+        /* Responsive container */
+        .viewport-container {
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        .viewport-container.desktop {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .viewport-container.tablet {
+            max-width: 768px;
+            width: 768px;
+        }
+
+        .viewport-container.mobile {
+            max-width: 375px;
+            width: 375px;
+        }
+
+        body.responsive-mode {
+            background-color: #34495e;
+            padding: 80px 20px 20px;
+        }
+
+        body.responsive-mode header {
+            position: fixed;
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
+
+        body.responsive-mode .viewport-container {
+            margin-top: 0;
+        }
+
+        /* Responsive adjustments for tablet and mobile */
+        .viewport-container.tablet .services-grid,
+        .viewport-container.mobile .services-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .viewport-container.tablet .portfolio-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .viewport-container.mobile .portfolio-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .viewport-container.tablet .testimonials-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .viewport-container.mobile .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .viewport-container.tablet .blog-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .viewport-container.mobile .blog-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .viewport-container.tablet .footer-content,
+        .viewport-container.mobile .footer-content {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .viewport-container.mobile .hero h1 {
+            font-size: 42px;
+        }
+
+        .viewport-container.tablet header,
+        .viewport-container.mobile header {
+            padding: 15px 20px;
+        }
+
+        .viewport-container.mobile .logo {
+            font-size: 18px;
+        }
+
+        .viewport-container.mobile .template-name {
+            display: none;
+        }
+
+        .viewport-container.tablet .services,
+        .viewport-container.tablet .portfolio,
+        .viewport-container.tablet .testimonials,
+        .viewport-container.tablet .blog,
+        .viewport-container.tablet footer,
+        .viewport-container.mobile .services,
+        .viewport-container.mobile .portfolio,
+        .viewport-container.mobile .testimonials,
+        .viewport-container.mobile .blog,
+        .viewport-container.mobile footer {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f5f0e8;
+            padding: 80px 50px 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .footer-about h3 {
+            color: #ff6600;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #999;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .footer-section h4 {
+            color: #666;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6600;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .social-icons a {
+            color: #ff6600;
+            font-size: 18px;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .copyright a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        .copyright i {
+            color: #e74c3c;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 50px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            color: #ff6600;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #ff6600;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 60px;
+            color: #ff6600;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .service-icon i {
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #999;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 50px;
+        }
+
+        .portfolio h2 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            aspect-ratio: 4/3;
+            background-color: #e0ddd5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 50px;
+        }
+
+        .testimonials h2 {
+            font-size: 42px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: #ebe7dd;
+            padding: 40px 30px;
+            border-radius: 4px;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #d4cfc4;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            color: #ff6600;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info p {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .testimonial-text {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 100px 50px;
+        }
+
+        .blog h2 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .blog-intro {
+            color: #999;
+            margin-bottom: 60px;
+            font-size: 14px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+        }
+
+        .blog-card {
+            background-color: white;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .blog-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background-color: #e0ddd5;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .blog-author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #d4cfc4;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .blog-author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-author-info p {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .blog-author-info span {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="logo">colorlib.</div>
+            <div class="template-name">MONARCHY</div>
+        </div>
+        <div class="header-icons">
+            <button class="icon-btn device-btn active" data-device="desktop"><i class="fas fa-desktop"></i></button>
+            <button class="icon-btn device-btn" data-device="tablet"><i class="fas fa-tablet-alt"></i></button>
+            <button class="icon-btn device-btn" data-device="mobile"><i class="fas fa-mobile-alt"></i></button>
+            <button class="icon-btn cart"><i class="fas fa-shopping-cart"></i></button>
+            <button class="icon-btn close" id="closeBtn"><i class="fas fa-times"></i></button>
+        </div>
+    </header>
+
+    <div class="viewport-container desktop" id="viewportContainer">
+
+    <section class="hero">
+        <h1>Do What You Love</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem nulla quos suscipit laborum fugit aspernatur rem pariatur illo.</p>
+        <button class="play-button">
+            <i class="fas fa-play"></i>
+        </button>
+    </section>
+
+    <section class="services">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Interface Design</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptatem reiciendis minus, a dolores.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>Product Design</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptatem reiciendis minus, a dolores.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Quality Results</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptatem reiciendis minus, a dolores.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+            <div class="portfolio-item"></div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Chad Hawkins</h4>
+                        <p>Customer</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui consequuntur rerum, iusto accusamus, numquam et vero aliquam delectus accusantium quo!
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Ayisha Atherton</h4>
+                        <p>Customer</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui consequuntur rerum, iusto accusamus, numquam et vero aliquam delectus accusantium quo!
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Riccardo Gilliam</h4>
+                        <p>Customer</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui consequuntur rerum, iusto accusamus, numquam et vero aliquam delectus accusantium quo!
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Jasleen Dunkley</h4>
+                        <p>Customer</p>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui consequuntur rerum, iusto accusamus, numquam et vero aliquam delectus accusantium quo!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog">
+        <h2>Blog Updates</h2>
+        <p class="blog-intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt ducimus facere quam eos tempore beatae non eius, provident.</p>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <div class="blog-date">October 18, 2019</div>
+                    <h3 class="blog-title">Google saying pseudo-telephoto is more important</h3>
+                    <div class="blog-author">
+                        <div class="blog-author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="blog-author-info">
+                            <p>by John Freeman</p>
+                            <span>Thinker & Designer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <div class="blog-date">October 18, 2019</div>
+                    <h3 class="blog-title">Google saying pseudo-telephoto is more important</h3>
+                    <div class="blog-author">
+                        <div class="blog-author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="blog-author-info">
+                            <p>by John Freeman</p>
+                            <span>Thinker & Designer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <div class="blog-date">October 18, 2019</div>
+                    <h3 class="blog-title">Google saying pseudo-telephoto is more important</h3>
+                    <div class="blog-author">
+                        <div class="blog-author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="blog-author-info">
+                            <p>by John Freeman</p>
+                            <span>Thinker & Designer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>MONARCHY</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit nostrum culpa commodi similique qui, eaque necessitatibus, saepe hic repellat suscipit.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="mailto:hello@mydomain.com">hello@mydomain.com</a></li>
+                    <li><a href="tel:+18292293382">+1 829 2293 382</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Home</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Home</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-skype"></i></a>
+        </div>
+        
+        <div class="copyright">
+            Copyright ©2025 All rights reserved | This template is made with <i class="fas fa-heart"></i> by <a href="#">Colorlib</a>
+        </div>
+    </footer>
+
+    </div><!-- End viewport-container -->
+
+    <script>
+        // Responsive device switcher
+        const deviceButtons = document.querySelectorAll('.device-btn');
+        const viewportContainer = document.getElementById('viewportContainer');
+        const closeBtn = document.getElementById('closeBtn');
+        
+        deviceButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const device = this.getAttribute('data-device');
+                
+                // Remove active class from all buttons
+                deviceButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Remove all device classes
+                viewportContainer.classList.remove('desktop', 'tablet', 'mobile');
+                
+                // Add selected device class
+                viewportContainer.classList.add(device);
+                
+                // Add responsive mode to body for non-desktop views
+                if (device !== 'desktop') {
+                    document.body.classList.add('responsive-mode');
+                } else {
+                    document.body.classList.remove('responsive-mode');
+                }
+            });
+        });
+        
+        // Close button - reset to desktop view
+        closeBtn.addEventListener('click', function() {
+            deviceButtons.forEach(btn => btn.classList.remove('active'));
+            deviceButtons[0].classList.add('active'); // Activate desktop button
+            viewportContainer.classList.remove('desktop', 'tablet', 'mobile');
+            viewportContainer.classList.add('desktop');
+            document.body.classList.remove('responsive-mode');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Play button interaction
+        document.querySelector('.play-button').addEventListener('click', function() {
+            alert('Video player would open here!');
+        });
+    </script>
+</body>
+</html>
